@@ -1,42 +1,41 @@
-<%= form_with(model: material) do |form| %>
+<%= form_with(model: material, local: true) do |form| %>
   <% if material.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(material.errors.count, "error") %> prohibited this material from being saved:</h2>
-
+    <div class="alert alert-danger">
+      <h4><%= pluralize(material.errors.count, "error") %> prohibited this material from being saved:</h4>
       <ul>
-        <% material.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <% material.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
+  <div class="form-group">
     <%= form.label :project_id, style: "display: block" %>
-    <%= form.text_field :project_id %>
+    <%= form.collection_select :project_id, Project.all, :id, :name, { prompt: "Select a project" }, { class: "form-control" } %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :store_name, style: "display: block" %>
-    <%= form.text_field :store_name %>
+    <%= form.text_field :store_name, required: true, class: "form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :phone, style: "display: block" %>
-    <%= form.text_field :phone %>
+    <%= form.text_field :phone, required: true, class: "form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :rate, style: "display: block" %>
-    <%= form.number_field :rate %>
+    <%= form.number_field :rate, required: true, class: "form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= form.label :paid_value, style: "display: block" %>
-    <%= form.number_field :paid_value %>
+    <%= form.number_field :paid_value, required: true, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-success" %> <!-- Added Bootstrap class for styling -->
   </div>
 <% end %>

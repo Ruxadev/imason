@@ -8,3 +8,13 @@
 
   <%= button_to "Destroy this project", @project, method: :delete %>
 </div>
+<p style="color: green"><%= notice %></p>
+
+<h1><%= @project.name %></h1>
+<p><strong>Description:</strong> <%= @project.description %></p>
+
+<div>
+  <%= link_to "Edit this project", edit_project_path(@project) %> |
+  <%= link_to "Back to projects", projects_path %>
+  <%= button_to "Destroy this project", @project, method: :delete, data: { confirm: "Are you sure?" } %>
+</div>

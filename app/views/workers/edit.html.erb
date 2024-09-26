@@ -1,12 +1,12 @@
 <% content_for :title, "Editing worker" %>
 
-<h1>Editing worker</h1>
+<h1>Editing Worker</h1>
 
-<%= render "form", worker: @worker %>
+<div class="container">
+  <%= render "form", worker: @worker %> <!-- Renders the form partial for editing worker -->
+</div>
 
-<br>
-
-<div>
-  <%= link_to "Show this worker", @worker %> |
-  <%= link_to "Back to workers", workers_path %>
+<div class="mt-3">
+  <%= link_to "Show this worker", @worker, class: "btn btn-primary" %> |
+  <%= link_to "Back to workers", workers_path, class: "btn btn-secondary" %>
 </div>

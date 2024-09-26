@@ -6,11 +6,11 @@
 
 <div id="workers">
   <% @workers.each do |worker| %>
-    <%= render worker %>
+    <%= render worker %>  <!-- This will render the _worker.html.erb partial for each worker -->
     <p>
-      <%= link_to "Show this worker", worker %>
+      <%= link_to "Show this worker", worker %> <!-- Link to the show page of the worker -->
     </p>
   <% end %>
 </div>
 
-<%= link_to "New worker", new_worker_path %>
+<%= link_to "New worker", new_worker_path %> <!-- Link to create a new worker -->

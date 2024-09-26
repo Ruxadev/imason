@@ -6,11 +6,13 @@
 
 <div id="materials">
   <% @materials.each do |material| %>
-    <%= render material %>
-    <p>
-      <%= link_to "Show this material", material %>
-    </p>
+    <div>
+      <%= render material %>
+      <p>
+        <%= link_to "Show this material", material %>
+      </p>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "New material", new_material_path %>
+<%= link_to "New material", new_material_path, class: "btn btn-primary" %>

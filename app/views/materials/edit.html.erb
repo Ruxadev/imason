@@ -1,12 +1,12 @@
 <% content_for :title, "Editing material" %>
 
-<h1>Editing material</h1>
+<h1>Editing Material</h1>
 
-<%= render "form", material: @material %>
+<div class="container">
+  <%= render "form", material: @material %> <!-- Renders the form partial for editing material -->
+</div>
 
-<br>
-
-<div>
-  <%= link_to "Show this material", @material %> |
-  <%= link_to "Back to materials", materials_path %>
+<div class="mt-3">
+  <%= link_to "Show this material", @material, class: "btn btn-primary" %> |
+  <%= link_to "Back to materials", materials_path, class: "btn btn-secondary" %>
 </div>

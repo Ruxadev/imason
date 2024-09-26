@@ -9,6 +9,8 @@
     <%= render project %>
     <p>
       <%= link_to "Show this project", project %>
+      <%= link_to "Edit", edit_project_path(project) %> | 
+      <%= button_to "Destroy", project, method: :delete, data: { confirm: "Are you sure?" } %>
     </p>
   <% end %>
 </div>
