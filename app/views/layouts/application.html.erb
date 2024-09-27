@@ -16,7 +16,8 @@
   <link rel="apple-touch-icon" href="/icon.png">
 
   <!-- Bootstrap CSS -->
-  <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
+  <!-- Update the stylesheet link to point to /assets/application.css -->
+  <link rel="stylesheet" href="/assets/application.css">
 </head>
 
 <body>
@@ -55,6 +56,6 @@
   </div>
 
   <!-- JavaScript files -->
-  <%= javascript_include_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
 </body>
 </html>

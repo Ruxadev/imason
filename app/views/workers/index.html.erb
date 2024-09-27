@@ -6,11 +6,13 @@
 
 <div id="workers">
   <% @workers.each do |worker| %>
-    <%= render worker %>  <!-- This will render the _worker.html.erb partial for each worker -->
+    <%= render worker %>
     <p>
-      <%= link_to "Show this worker", worker %> <!-- Link to the show page of the worker -->
+      <%= link_to "Show this worker", worker %> |
+      <%= link_to "Edit", edit_worker_path(worker) %> | 
+      <%= button_to "Destroy", worker, method: :delete, data: { confirm: "Are you sure?" } %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New worker", new_worker_path %> <!-- Link to create a new worker -->
+<%= link_to "New worker", new_worker_path %>

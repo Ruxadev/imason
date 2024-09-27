@@ -7,13 +7,15 @@ class ProjectsController < ApplicationController
     @projects = current_user.projects # Show only projects for the logged-in user
   end
 
-  def show; end
+  def show
+  end
 
   def new
     @project = Project.new
   end
 
-  def edit; end
+  def edit
+  end
 
   def create
     @project = current_user.projects.build(project_params)
@@ -35,6 +37,12 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     redirect_to projects_url, notice: "Project was successfully destroyed."
+  end
+
+  def manifest
+    respond_to do |format|
+      format.json { render json: { name: 'My App' } }
+    end
   end
 
   private

@@ -1,15 +1,5 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @project %>
-
-<div>
-  <%= link_to "Edit this project", edit_project_path(@project) %> |
-  <%= link_to "Back to projects", projects_path %>
-
-  <%= button_to "Destroy this project", @project, method: :delete %>
-</div>
-<p style="color: green"><%= notice %></p>
-
 <h1><%= @project.name %></h1>
 <p><strong>Description:</strong> <%= @project.description %></p>
 
@@ -18,3 +8,32 @@
   <%= link_to "Back to projects", projects_path %>
   <%= button_to "Destroy this project", @project, method: :delete, data: { confirm: "Are you sure?" } %>
 </div>
+
+<h2>Materials</h2>
+<div id="materials">
+  <% @project.materials.each do |material| %>
+    <%= render material %>
+    <p>
+      <%= link_to "Show this material", material %> |
+      <%= link_to "Edit", edit_material_path(material) %> | 
+      <%= button_to "Destroy", material, method: :delete, data: { confirm: "Are you sure?" } %>
+    </p>
+  <% end %>
+</div>
+
+<h2>Workers</h2>
+<div id="workers">
+  <% @project.workers.each do |worker| %>
+    <%= render worker %>
+    <p>
+      <%= link_to "Show this worker", worker %> |
+      <%= link_to "Edit", edit_worker_path(worker) %> | 
+      <%= button_to "Destroy", worker, method: :delete, data: { confirm: "Are you sure?" } %>
+    </p>
+  <% end %>
+</div>
+
+<p>
+  <%= link_to "Add material to this project", new_project_material_path(@project) %> |
+  <%= link_to "Add worker to this project", new_project_worker_path(@project) %>
+</p>

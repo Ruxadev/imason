@@ -1,32 +1,9 @@
-<div id="<%= dom_id worker %>">
-  <p>
-    <strong>Project:</strong>
-    <%= worker.project_id %>
-  </p>
-
-  <p>
-    <strong>Name:</strong>
-    <%= worker.name %>
-  </p>
-
-  <p>
-    <strong>Phone:</strong>
-    <%= worker.phone %>
-  </p>
-
-  <p>
-    <strong>Rate:</strong>
-    <%= worker.rate %>
-  </p>
-
-  <p>
-    <strong>Paid value:</strong>
-    <%= worker.paid_value %>
-  </p>
-
-  <p>
-    <strong>Worked hours:</strong>
-    <%= worker.worked_hours %>
-  </p>
-
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"><%= worker.name %></h5>
+    <p class="card-text">Phone: <%= worker.phone %></p>
+    <p class="card-text">Rate: <%= worker.rate %></p>
+    <p class="card-text">Paid Value: <%= worker.paid_value %></p>
+    <p class="card-text">Worked Hours: <%= worker.worked_hours %></p>
+  </div>
 </div>

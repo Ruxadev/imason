@@ -1,27 +1,8 @@
-<div id="<%= dom_id material %>">
-  <p>
-    <strong>Project:</strong>
-    <%= material.project_id %>
-  </p>
-
-  <p>
-    <strong>Store name:</strong>
-    <%= material.store_name %>
-  </p>
-
-  <p>
-    <strong>Phone:</strong>
-    <%= material.phone %>
-  </p>
-
-  <p>
-    <strong>Rate:</strong>
-    <%= material.rate %>
-  </p>
-
-  <p>
-    <strong>Paid value:</strong>
-    <%= material.paid_value %>
-  </p>
-
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title"><%= material.store_name %></h5>
+    <p class="card-text">Phone: <%= material.phone %></p>
+    <p class="card-text">Rate: <%= material.rate %></p>
+    <p class="card-text">Paid Value: <%= material.paid_value %></p>
+  </div>
 </div>

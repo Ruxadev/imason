@@ -6,13 +6,13 @@
 
 <div id="materials">
   <% @materials.each do |material| %>
-    <div>
-      <%= render material %>
-      <p>
-        <%= link_to "Show this material", material %>
-      </p>
-    </div>
+    <%= render material %>
+    <p>
+      <%= link_to "Show this material", material %> |
+      <%= link_to "Edit", edit_material_path(material) %> | 
+      <%= button_to "Destroy", material, method: :delete, data: { confirm: "Are you sure?" } %>
+    </p>
   <% end %>
 </div>
 
-<%= link_to "New material", new_material_path, class: "btn btn-primary" %>
+<%= link_to "
