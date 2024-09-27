@@ -1,10 +1,13 @@
+# config/routes.rb
 Rails.application.routes.draw do
   root 'projects#index'
   devise_for :users
-  get '/manifest.json', to: 'projects#manifest'
   delete '/users/sign_out', to: 'application#destroy', as: :sign_out
   resources :projects do
-    resources :workers
     resources :materials
+    resources :workers
   end
+  resources :materials
+  resources :workers
+  get '/manifest.json', to: 'your_controller#your_action'
 end

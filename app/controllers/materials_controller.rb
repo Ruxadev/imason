@@ -4,7 +4,12 @@ class MaterialsController < ApplicationController
   before_action :set_material, only: [:show, :edit, :update, :destroy]
 
   def index
-    @materials = @project.materials
+    if params[:project_id].present?
+      @project = Project.find(params[:project_id])
+      @materials = @project.materials
+    else
+      @materials = Material.all
+    end
   end
 
   def show; end
@@ -40,7 +45,7 @@ class MaterialsController < ApplicationController
   private
 
   def set_project
-    @project = Project.find(params[:project_id])
+    @project = Project.find(params[:project_id]) if params[:project_id].present?
   end
 
   def set_material

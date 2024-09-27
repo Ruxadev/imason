@@ -4,7 +4,12 @@ class WorkersController < ApplicationController
   before_action :set_worker, only: [:show, :edit, :update, :destroy]
 
   def index
-    @workers = @project.workers
+    if params[:project_id].present?
+      @project = Project.find(params[project_id])
+      @workers = @project.workers
+    else
+      @workers = Worker.all
+    end
   end
 
   def show; end
@@ -40,7 +45,7 @@ class WorkersController < ApplicationController
   private
 
   def set_project
-    @project = Project.find(params[:project_id])
+    @project = Project.find(params[:project_id]) if params[:project_id].present?
   end
 
   def set_worker
