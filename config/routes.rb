@@ -1,19 +1,24 @@
+# config/routes.rb
 Rails.application.routes.draw do
+  # Devise routes for user authentication
   devise_for :users
-  root to: "home#index"
-  resources :materials
-  resources :workers
-  resources :projects
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  # Set the root path to Devise's sign_in page
+  authenticated :user do
+    # When user is logged in, redirect to projects index page
+    root to: 'projects#index', as: :authenticated_root
+  end
 
-  # Render dynamic PWA files from app/views/pwa/*
-  get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-  get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+  # When user is not logged in, redirect to the Devise sign-in page
+  unauthenticated do
+    root to: 'devise/sessions#new', as: :unauthenticated_root
+  end
 
-  # Defines the root path route ("/")
-  # root "posts#index"
+  # Resources for other parts of the application
+  resources :projects do
+    resources :materials, only: [:index, :new, :create] # Nested resources for better organization
+    resources :workers, only: [:index, :new, :create]
+  end
+  resources :materials, except: [:index, :new, :create]
+  resources :workers, except: [:index, :new, :create]
 end

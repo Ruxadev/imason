@@ -1,70 +1,53 @@
+# app/controllers/workers_controller.rb
 class WorkersController < ApplicationController
-  before_action :set_worker, only: %i[ show edit update destroy ]
+  before_action :set_project, only: [:index, :new, :create]
+  before_action :set_worker, only: [:show, :edit, :update, :destroy]
 
-  # GET /workers or /workers.json
   def index
-    @workers = Worker.all
+    @workers = @project.workers
   end
 
-  # GET /workers/1 or /workers/1.json
-  def show
-  end
+  def show; end
 
-  # GET /workers/new
   def new
-    @worker = Worker.new
+    @worker = @project.workers.build
   end
 
-  # GET /workers/1/edit
-  def edit
-  end
+  def edit; end
 
-  # POST /workers or /workers.json
   def create
-    @worker = Worker.new(worker_params)
-
-    respond_to do |format|
-      if @worker.save
-        format.html { redirect_to @worker, notice: "Worker was successfully created." }
-        format.json { render :show, status: :created, location: @worker }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @worker.errors, status: :unprocessable_entity }
-      end
+    @worker = @project.workers.build(worker_params)
+    if @worker.save
+      redirect_to [@project, @worker], notice: "Worker was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /workers/1 or /workers/1.json
   def update
-    respond_to do |format|
-      if @worker.update(worker_params)
-        format.html { redirect_to @worker, notice: "Worker was successfully updated." }
-        format.json { render :show, status: :ok, location: @worker }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @worker.errors, status: :unprocessable_entity }
-      end
+    if @worker.update(worker_params)
+      redirect_to @worker, notice: "Worker was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
-  # DELETE /workers/1 or /workers/1.json
   def destroy
-    @worker.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to workers_path, status: :see_other, notice: "Worker was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    @worker.destroy
+    redirect_to workers_url, notice: "Worker was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_worker
-      @worker = Worker.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def worker_params
-      params.require(:worker).permit(:project_id, :name, :phone, :rate, :paid_value, :worked_hours)
-    end
+  def set_project
+    @project = Project.find(params[:project_id])
+  end
+
+  def set_worker
+    @worker = Worker.find(params[:id])
+  end
+
+  def worker_params
+    params.require(:worker).permit(:name, :phone, :rate, :paid_value, :worked_hours, :project_id)
+  end
 end
