@@ -8,6 +8,7 @@ class MaterialsController < ApplicationController
       @project = Project.find(params[:project_id])
       @materials = @project.materials
     else
+      project = nil
       @materials = Material.all
     end
   end

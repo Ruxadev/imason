@@ -9,5 +9,4 @@ Rails.application.routes.draw do
   end
   resources :materials
   resources :workers
-  get '/manifest.json', to: 'your_controller#your_action'
 end

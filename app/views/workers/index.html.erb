@@ -3,6 +3,7 @@
 <% content_for :title, "Workers" %>
 
 <h1>Workers</h1>
+<%= link_to "Add new worker", new_worker_path %>
 
 <div id="workers">
   <% @workers.each do |worker| %>
@@ -11,8 +12,8 @@
       <%= link_to "Show this worker", worker %> |
       <%= link_to "Edit", edit_worker_path(worker) %> | 
       <%= button_to "Destroy", worker, method: :delete, data: { confirm: "Are you sure?" } %>
+      <%= link_to "Back to project", projects_path(id: worker.project.id) %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New worker", new_worker_path %>

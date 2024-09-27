@@ -8,6 +8,7 @@ class WorkersController < ApplicationController
       @project = Project.find(params[project_id])
       @workers = @project.workers
     else
+      project = nil
       @workers = Worker.all
     end
   end
