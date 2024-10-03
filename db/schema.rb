@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_27_203246) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_02_043126) do
   create_table "materials", force: :cascade do |t|
     t.integer "project_id", null: false
     t.string "store_name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_27_203246) do
     t.integer "paid_value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity"
     t.index ["project_id"], name: "index_materials_on_project_id"
   end
 
@@ -52,6 +53,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_27_203246) do
     t.integer "worked_hours"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "job_title"
+    t.string "role"
     t.index ["project_id"], name: "index_workers_on_project_id"
   end
 

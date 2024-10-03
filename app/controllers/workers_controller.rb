@@ -1,59 +1,53 @@
-# app/controllers/workers_controller.rb
 class WorkersController < ApplicationController
-  before_action :set_project, only: [:index, :new, :create]
-  before_action :set_worker, only: [:show, :edit, :update, :destroy]
+  before_action :set_project
 
   def index
-    if params[:project_id].present?
-      @project = Project.find(params[project_id])
-      @workers = @project.workers
-    else
-      project = nil
-      @workers = Worker.all
-    end
+    @workers = @project.workers
   end
 
-  def show; end
+  def show
+    @worker = @project.workers.find(params[:id])
+  end
 
   def new
-    @worker = @project.workers.build
+    @worker = @project.workers.new
   end
 
-  def edit; end
-
   def create
-    @worker = @project.workers.build(worker_params)
+    @worker = @project.workers.new(worker_params)
     if @worker.save
-      redirect_to [@project, @worker], notice: "Worker was successfully created."
+      redirect_to project_workers_path(@project), notice: 'Worker was successfully created.'
     else
-      render :new, status: :unprocessable_entity
+      render :new
     end
+  end
+
+  def edit
+    @worker = @project.workers.find(params[:id])
   end
 
   def update
+    @worker = @project.workers.find(params[:id])
     if @worker.update(worker_params)
-      redirect_to @worker, notice: "Worker was successfully updated."
+      redirect_to project_worker_path(@project, @worker), notice: 'Worker was successfully updated.'
     else
-      render :edit, status: :unprocessable_entity
+      render :edit
     end
   end
 
   def destroy
+    @worker = @project.workers.find(params[:id])
     @worker.destroy
-    redirect_to workers_url, notice: "Worker was successfully destroyed."
+    redirect_to project_workers_path(@project), notice: 'Worker was successfully destroyed.'
   end
 
   private
 
   def set_project
-    @project = Project.find(params[:project_id]) if params[:project_id].present?
-  end
-
-  def set_worker
-    @worker = Worker.find(params[:id])
+    @project = Project.find(params[:project_id])
   end
 
   def worker_params
-    params.require(:worker).permit(:name, :phone, :rate, :paid_value, :worked_hours, :project_id)
+    params.require(:worker).permit(:name, :role, :project_id) # Adjust the permitted params as necessary
   end
 end

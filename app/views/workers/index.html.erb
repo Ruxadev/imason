@@ -1,19 +1,20 @@
-<p style="color: green"><%= notice %></p>
+<h1 class="mb-4">Workers</h1>
 
-<% content_for :title, "Workers" %>
+<%= link_to "New Worker", new_project_worker_path(@project), class: "btn btn-primary mb-4" %>
 
-<h1>Workers</h1>
-<%= link_to "Add new worker", new_worker_path %>
-
-<div id="workers">
+<div id="workers" class="row">
   <% @workers.each do |worker| %>
-    <%= render worker %>
-    <p>
-      <%= link_to "Show this worker", worker %> |
-      <%= link_to "Edit", edit_worker_path(worker) %> | 
-      <%= button_to "Destroy", worker, method: :delete, data: { confirm: "Are you sure?" } %>
-      <%= link_to "Back to project", projects_path(id: worker.project.id) %>
-    </p>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title"><%= worker.name %></h5>
+          <p class="card-text">Job Title: <%= worker.job_title || 'N/A' %></p> <!-- Displaying job_title -->
+        </div>
+        <div class="card-footer">
+          <%= link_to 'Edit', edit_project_worker_path(@project, worker), class: 'btn btn-secondary' %>
+          <%= link_to 'Destroy', project_worker_path(@project, worker), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
-

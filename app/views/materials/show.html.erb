@@ -1,12 +1,15 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :title, "Material Details" %>
 
-<h1><%= @material.store_name %></h1>
+<h1><%= @material.store_name %></h1> <!-- Display the store name instead of name -->
 <p><strong>Phone:</strong> <%= @material.phone %></p>
-<p><strong>Rate:</strong> <%= @material.rate %></p>
-<p><strong>Paid Value:</strong> <%= @material.paid_value %></p>
+<p><strong>Rate:</strong> <%= number_to_currency(@material.rate) %></p>
+<p><strong>Paid Value:</strong> <%= number_to_currency(@material.paid_value) %></p>
+<p><strong>Quantity:</strong> <%= @material.quantity || 'N/A' %></p>
 
-<div>
-  <%= link_to "Edit this material", edit_material_path(@material) %> |
-  <%= link_to "Back to materials", materials_path %>
-  <%= button_to "Destroy this material", @material, method: :delete, data: { confirm: "Are you sure?" } %>
+<%= link_to "Edit", edit_project_material_path(@project, @material), class: "btn btn-warning" %>
+<%= button_to "Destroy", project_material_path(@project, @material), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger destroy-btn" %>
+
+<div class="mt-2 d-flex">
+  <%= link_to "Back to Materials", project_materials_path(@project), class: "btn btn-secondary me-2" %>
+  <%= link_to "Back to Project", project_path(@project), class: "btn btn-secondary" %>
 </div>

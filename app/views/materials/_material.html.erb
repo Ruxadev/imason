@@ -1,8 +1,9 @@
-<div class="card" style="width: 18rem;">
+<div class="card mb-3" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title"><%= material.store_name %></h5>
-    <p class="card-text">Phone: <%= material.phone %></p>
-    <p class="card-text">Rate: <%= material.rate %></p>
-    <p class="card-text">Paid Value: <%= material.paid_value %></p>
+    <p class="card-text"><strong>Phone:</strong> <%= material.phone %></p>
+    <p class="card-text"><strong>Rate:</strong> <%= number_to_currency(material.rate) %></p>
+    <p class="card-text"><strong>Paid Value:</strong> <%= number_to_currency(material.paid_value) %></p>
+    <p class="card-text"><strong>Quantity:</strong> <%= material.quantity || "N/A" %></p>
   </div>
 </div>

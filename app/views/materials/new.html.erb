@@ -1,11 +1,6 @@
-<% content_for :title, "New material" %>
+<!-- views/materials/new.html.erb -->
+<% content_for :title, "New Material" %>
 
 <h1>New Material</h1>
-
-<div class="container">
-  <%= render "form", material: @material %> <!-- Renders the form partial for new material -->
-</div>
-
-<div class="mt-3">
-  <%= link_to "Back to materials", materials_path, class: "btn btn-secondary" %>
-</div>
+<%= render 'form', material: @material %>
+<%= link_to "Back to Materials", project_materials_path(@project), class: "btn btn-secondary mt-2" %>

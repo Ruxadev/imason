@@ -1,4 +1,5 @@
 import "@hotwired/turbo-rails"
+Turbo.session.drive = false;
 import "@rails/ujs"
 import "./controllers"
 import "bootstrap"

@@ -5,7 +5,7 @@
     "esbuild": "^0.24.0"
   },
   "scripts": {
-    "build": "esbuild app/javascript/application.js --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
+    "build": "esbuild app/javascript/application.js --bundle --sourcemap=false --format=esm --outdir=app/assets/builds --public-path=/assets",
     "build:css:compile": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
     "build:css:prefix": "postcss ./app/assets/builds/application.css --use=autoprefixer --output=./app/assets/builds/application.css",
     "build:css": "yarn build:css:compile && yarn build:css:prefix",
@@ -21,6 +21,7 @@
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "concurrently": "^8.2.0",
+    "esbuild-rails": "^1.0.7",
     "nodemon": "^3.1.7",
     "postcss": "^8.4.47",
     "postcss-cli": "^11.0.0",

@@ -1,10 +1,7 @@
-<p style="color: green"><%= notice %></p>
+<h1>Worker Details</h1>
 
-<%= render @worker %> <!-- Renders the worker's details using the _worker.html.erb partial -->
+<%= render @worker %>
 
-<div>
-  <%= link_to "Edit this worker", edit_worker_path(@worker) %> | <!-- Link to edit the worker -->
-  <%= link_to "Back to workers", workers_path %> <!-- Link to go back to the index page of workers -->
-
-  <%= button_to "Destroy this worker", @worker, method: :delete %> <!-- Button to delete the worker -->
-</div>
+<%= link_to "Edit this Worker", edit_project_worker_path(@worker.project, @worker), class: "btn btn-primary" %> |
+<%= button_to "Destroy this Worker", project_worker_path(@worker.project, @worker), method: :delete, class: "btn btn-danger" %> |
+<%= link_to "Back to Workers", project_workers_path(@worker.project), class: "btn btn-secondary" %>
