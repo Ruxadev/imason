@@ -48,6 +48,6 @@ class WorkersController < ApplicationController
   end
 
   def worker_params
-    params.require(:worker).permit(:name, :role, :project_id) # Adjust the permitted params as necessary
+    params.require(:worker).permit(:name, :job_title, :phone, :rate, :paid_value, :worked_hours)
   end
 end

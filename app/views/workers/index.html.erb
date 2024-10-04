@@ -1,20 +1,28 @@
-<h1 class="mb-4">Workers</h1>
+<!-- views/workers/index.html.erb -->
+<div class="container mt-5">
+  <h1 class="mb-4 text-center">Workers</h1>
 
-<%= link_to "New Worker", new_project_worker_path(@project), class: "btn btn-primary mb-4" %>
-
-<div id="workers" class="row">
-  <% @workers.each do |worker| %>
-    <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <div class="card-body">
-          <h5 class="card-title"><%= worker.name %></h5>
-          <p class="card-text">Job Title: <%= worker.job_title || 'N/A' %></p> <!-- Displaying job_title -->
-        </div>
-        <div class="card-footer">
-          <%= link_to 'Edit', edit_project_worker_path(@project, worker), class: 'btn btn-secondary' %>
-          <%= link_to 'Destroy', project_worker_path(@project, worker), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-        </div>
-      </div>
+  <% if notice %>
+    <div class="alert alert-info">
+      <%= notice %>
     </div>
   <% end %>
+
+  <div class="d-flex justify-content-start mb-4">
+    <%= link_to "New Worker", new_project_worker_path(@project), class: "btn btn-primary" %>
+  </div>
+
+  <div class="row">
+    <% @workers.each do |worker| %>
+      <div class="col-md-4 mb-2">
+        <%= render 'worker', worker: worker %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 text-left mb-4">
+      <%= link_to "Back to Project", project_path(@project), class: "btn btn-secondary" %>
+    </div>
+  </div>
 </div>
