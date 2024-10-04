@@ -27,7 +27,7 @@ class MaterialsController < ApplicationController
 
   def update
     if @material.update(material_params)
-      redirect_to project_material_path(@project, @material), notice: "Material was successfully updated."
+      redirect_to project_material_path(@project, @material), notice: 'Material was successfully updated.'
     else
       render :edit
     end
@@ -56,6 +56,6 @@ class MaterialsController < ApplicationController
   end
 
   def material_params
-    params.require(:material).permit(:store_name, :phone, :rate, :paid_value, :quantity)
+    params.require(:material).permit(:project_id, :store_name, :building_material, :phone, :quantity, :rate, :paid_value, :observation)
   end
 end

@@ -1,42 +1,65 @@
 <!-- views/materials/_form.html.erb -->
 <%= form_with(model: [@project, @material], local: true) do |form| %>
-  <% if material.errors.any? %>
+  <% if @material.errors.any? %>
     <div class="alert alert-danger">
-      <h4><%= pluralize(material.errors.count, "error") %> prohibited this material from being saved:</h4>
+      <h4><%= pluralize(@material.errors.count, "error") %> prohibited this material from being saved:</h4>
       <ul>
-        <% material.errors.full_messages.each do |message| %>
+        <% @material.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :description %> <!-- Example field -->
-    <%= form.text_area :description, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :quantity %> <!-- Example field -->
-    <%= form.number_field :quantity, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :unit_price %> <!-- Example field -->
-    <%= form.number_field :unit_price, step: "0.01", class: "form-control" %>
-  </div>
-
+  <!-- Project Selection Field -->
   <div class="form-group">
     <%= form.label :project_id, style: "display: block" %>
     <%= form.collection_select :project_id, Project.all, :id, :name, { prompt: "Select a project" }, { class: "form-control" } %>
   </div>
 
-  <div>
-    <%= form.submit class: "btn btn-success" %>
+  <!-- Store Name Field -->
+  <div class="form-group">
+    <%= form.label :store_name %>
+    <%= form.text_field :store_name, class: "form-control" %>
+  </div>
+
+    <!-- Building Material Field -->
+  <div class="form-group">
+    <%= form.label :building_material %>
+    <%= form.text_field :building_material, class: "form-control" %>
+  </div>
+
+  <!-- Phone Field -->
+  <div class="form-group">
+    <%= form.label :phone %>
+    <%= form.telephone_field :phone, class: "form-control" %>
+  </div>
+
+    <!-- Quantity Field -->
+  <div class="form-group">
+    <%= form.label :quantity %>
+    <%= form.number_field :quantity, class: "form-control" %>
+  </div>
+
+  <!-- Rate Field -->
+  <div class="form-group">
+    <%= form.label :rate %>
+    <%= form.number_field :rate, class: "form-control", step: "0.01" %>
+  </div>
+
+  <!-- Paid Value Field -->
+  <div class="form-group">
+    <%= form.label :paid_value %>
+    <%= form.number_field :paid_value, class: "form-control", step: "0.01" %>
+  </div>
+
+  <!-- Observation Field -->
+  <div class="form-group">
+    <%= form.label :observation %>
+    <%= form.text_area :observation, class: "form-control" %>
+  </div>
+
+  <div class="form-group mt-4"> <!-- Added mt-4 for top margin -->
+    <%= form.submit class: "btn btn-primary" %>
   </div>
 <% end %>

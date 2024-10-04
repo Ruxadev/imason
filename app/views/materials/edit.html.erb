@@ -1,6 +1,14 @@
 <!-- views/materials/edit.html.erb -->
-<% content_for :title, "Edit Material" %>
-
-<h1>Edit Material</h1>
-<%= render 'form', material: @material %>
-<%= link_to "Back to Materials", project_materials_path(@project), class: "btn btn-secondary mt-2" %>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h1 class="text-center mb-4">Edit Material</h1>
+      <div class="text mb-2">
+        <%= render 'form', material: @material %>
+      </div>
+      <div class="text mb-4">
+        <%= link_to "Back to Materials", project_materials_path(@project), class: "btn btn-secondary" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_02_043126) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_03_210524) do
   create_table "materials", force: :cascade do |t|
     t.integer "project_id", null: false
     t.string "store_name"
@@ -20,6 +20,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_02_043126) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "quantity"
+    t.string "building_material"
+    t.string "name"
+    t.string "observation"
     t.index ["project_id"], name: "index_materials_on_project_id"
   end
 

@@ -1,34 +1,26 @@
 <!-- views/materials/index.html.erb -->
-<% content_for :title, "Materials" %>
+<div class="container mt-5">
+  <h1 class="mb-4 text-center">Materials</h1>
 
-<% if notice %>
-  <div class="alert alert-info">
-    <%= notice %>
-  </div>
-<% end %>
-
-<h1 class="mb-4">Materials</h1>
-
-<%= link_to "Back to Project", project_path(@project), class: "btn btn-secondary mb-4" %>
-
-<%= link_to "New Material", new_project_material_path(@project), class: "btn btn-primary mb-4" %>
-
-<div class="row">
-  <% @materials.each do |material| %>
-    <div class="col-md-4 mb-4">
-      <div class="card h-100">
-        <div class="card-body">
-          <h5 class="card-title"><%= material.store_name %></h5> <!-- Assuming material has a name -->
-          <!-- Add other material details if needed -->
-        </div>
-        <div class="card-footer">
-          <div class="btn-group" role="group">
-            <%= link_to "Show", project_material_path(@project, material), class: "btn btn-outline-info btn-sm" %>
-            <%= link_to "Edit", edit_project_material_path(@project, material), class: "btn btn-outline-warning btn-sm" %>
-            <%= button_to "Destroy", project_material_path(@project, material), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-danger btn-sm destroy-btn" %>
-          </div>
-        </div>
-      </div>
+  <% if notice %>
+    <div class="alert alert-info">
+      <%= notice %>
     </div>
   <% end %>
+
+  <div class="d-flex justify-content-start mb-4">
+    <%= link_to "New Material", new_project_material_path(@project), class: "btn btn-primary" %>
+  </div>
+
+  <div class="row">
+    <% @materials.each do |material| %>
+      <div class="col-md-4 mb-2">
+        <%= render 'material', material: material %>
+      </div>
+    <% end %>
+  </div>
+   <div class="row">
+      <div class="col-md-12 text-left mb-4">
+        <%= link_to "Back to Project", project_path(@project), class: "btn btn-secondary" %>
+      </div>
 </div>
