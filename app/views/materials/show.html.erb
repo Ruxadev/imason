@@ -4,7 +4,7 @@
     <div class="col-md-8 offset-md-2">
       <h1 class="text-center mb-4"><%= @material.store_name %> Details</h1>
       <div class="card mb-3">
-        <div class="card-body">
+        <div class="card h-100 shadow-lg p-3 body rounded">
           <p class="card-text"><strong>Building Material:</strong> <%= @material.building_material %></p>
           <p class="card-text"><strong>Phone:</strong> <%= @material.phone %></p>
           <p class="card-text"><strong>Rate:</strong> <%= number_to_currency(@material.rate) %></p>
@@ -16,7 +16,7 @@
 
 <div class="d-flex justify-content-start mb-2">
   <%= link_to "Edit", edit_project_material_path(@project, @material), class: "btn btn-outline-secondary btn-sm mx-1 show-btn" %>
-  <%= button_to "Destroy", project_material_path(@project, @material), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-secondary btn-sm mx-1 show-btn" %>
+  <%= button_to "Delete", project_material_path(@project, @material), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-secondary btn-sm mx-1 show-btn hover-danger" %>
   <%= link_to "Back to Materials", project_materials_path(@project), class: "btn btn-outline-secondary btn-sm mx-1 show-btn" %>
 </div>
 

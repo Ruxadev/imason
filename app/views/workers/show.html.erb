@@ -4,7 +4,7 @@
     <div class="col-md-8 offset-md-2">
       <h1 class="text-center mb-4"><%= @worker.name %> Details</h1>
       <div class="card mb-3">
-        <div class="card-body">
+        <div class="card h-100 shadow-lg p-3 body rounded">
           <p class="card-text"><strong>Name:</strong> <%= @worker.name %></p>
           <p class="card-text"><strong>Job Title:</strong> <%= @worker.job_title %></p>
           <p class="card-text"><strong>Phone:</strong> <%= @worker.phone %></p>
@@ -16,7 +16,7 @@
 
       <div class="d-flex justify-content-start mb-2">
         <%= link_to "Edit", edit_project_worker_path(@project, @worker), class: "btn btn-outline-secondary btn-sm mx-1" %>
-        <%= button_to "Destroy", project_worker_path(@project, @worker), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-secondary btn-sm mx-1" %>
+        <%= button_to "Delete", project_worker_path(@project, @worker), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-outline-secondary btn-sm mx-1" %>
         <%= link_to "Back to Workers", project_workers_path(@project), class: "btn btn-outline-secondary btn-sm mx-1" %>
       </div>
 

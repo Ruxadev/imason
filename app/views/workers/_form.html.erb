@@ -13,7 +13,7 @@
 
         <div class="form-group mb-3">
           <%= form.label :name %>
-          <%= form.text_field :name, class: "form-control" %>
+          <%= form.text_field :name, class: "form-control " %>
         </div>
 
         <div class="form-group mb-3">
@@ -41,7 +41,7 @@
           <%= form.number_field :worked_hours, class: "form-control" %>
         </div>
 
-        <div class="text-end">
+        <div class="text-start">
           <%= form.submit class: "btn btn-primary" %>
           <%= link_to "Back to Workers", project_workers_path(@project), class: "btn btn-secondary" %>
         </div>
