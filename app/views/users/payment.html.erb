@@ -1,0 +1,19 @@
+<h2>Payment Information</h2>
+
+<%= form_with url: payment_path do |f| %>
+  <!-- Add fields for credit card information -->
+  
+  <!-- For Fake Stripe -->
+  
+   <!-- Example fields -->
+   <div class="form-group">
+     <label>Card Number</label>
+     <input type="text" name="card_number" class="form-control" required />
+   </div>
+
+   <!-- Additional fields like expiration date and CVC -->
+
+   <div class="actions">
+     <%= f.submit "Pay", class: "btn btn-primary" %>
+   </div>
+<% end %>

@@ -1,5 +1,5 @@
 class Project < ApplicationRecord
-  has_many :materials
-  has_many :workers
   belongs_to :user
+  has_many :materials, dependent: :destroy
+  has_many :workers, dependent: :destroy
 end

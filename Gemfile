@@ -47,6 +47,8 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   gem "devise"
+
+  gem "fake_stripe"
 end
 
 group :development do
